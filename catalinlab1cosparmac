@@ -1,0 +1,48 @@
+class Book:
+    def __init__(self, title, author, isbn):
+        self.title = title
+        self.author = author
+        self.isbn = isbn
+
+    def __str__(self):
+        return f"Title: {self.title}, Author: {self.author}, ISBN: {self.isbn}"
+
+
+class Library:
+    def __init__(self):
+        self.books = []
+
+    def add_book(self, book):
+        self.books.append(book)
+        print(f"Book '{book.title}' added to the library.")
+
+    def remove_book(self, book):
+        if book in self.books:
+            self.books.remove(book)
+            print(f"Book '{book.title}' removed from the library.")
+        else:
+            print("Book not found in the library.")
+
+    def display_books(self):
+        if not self.books:
+            print("No books in the library.")
+        else:
+            print("Books in the library:")
+            for book in self.books:
+                print(book)
+
+
+if __name__ == "__main__":
+    book1 = Book("Introduction to Python", "John Doe", "123456")
+    book2 = Book("Data Structures and Algorithms", "Jane Smith", "789012")
+
+    library = Library()
+
+    library.add_book(book1)
+    library.add_book(book2)
+
+    library.display_books()
+
+    library.remove_book(book1)
+
+    library.display_books()
